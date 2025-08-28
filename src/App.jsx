@@ -42,7 +42,7 @@ function App() {
   const [date, setDate] = useState(todayDate.toLocaleDateString("en-GB"));
 
   function handleSubmit() {
-    setData([...data, { title, type, amount, date, id: Date.now() }]);
+    setData([{ title, type, amount, date, id: Date.now() }, ...data ]);
     setTitle("");
     setAmount("");
     setDate(new Date().toLocaleDateString("en-GB"));
