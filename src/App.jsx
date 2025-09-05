@@ -82,20 +82,21 @@ function App() {
                   }}
                   value={type}
                 >
-                  <option value="income">Income</option>
-                  <option value="expense">Expense</option>
+                  <option value="income">Income 💰</option>
+                  <option value="expense">Expense 🛒</option>
                 </select>
               </div>
 
               <InputBox
                 name={"Amount"}
+                type={"number"} 
                 onchange={(e) => {
                   setAmount(e.target.value);
                 }}
                 value={amount}
               />
 
-              <InputBox name={"Date"} value={date} />
+              <InputBox name={"Date"} value={date} isDisabled={true} />
               <div className="w-auto flex justify-center col-span-2">
                 <button
                   className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold px-3 text-xl py-2"
@@ -140,18 +141,18 @@ function App() {
           Transaction History
         </h2>
       </div>
-      <div>
+      
         <InfoCard
           title={"Title"}
           amount={"Amount"}
           type={"Type"}
           date={"Date"}
-          css={`text-l font-bold mr-30 md:text-xl ${
+          css={`text-sm font-bold md:text-xl uppercase ${
             data.length > 0 ? "" : "hidden"
           }`}
           hidden={true}
         />
-      </div>
+      
       <div>
         {data.length === 0 ? (
           <div className="text-center text-gray-500 font-semibold my-4">
@@ -165,6 +166,7 @@ function App() {
               amount={item.amount}
               type={item.type}
               date={item.date}
+              css={`text-sm md:text-lg `}
               ondelete={() => {
                 const updatedData = data.filter((i) => i.id !== item.id);
                 setData(updatedData);
